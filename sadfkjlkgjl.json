@@ -1,0 +1,100 @@
+ // Add a Note
+ const addNote = async(title, description, tag) => {
+  //call api 
+  const response = await fetch(`${host}/api/Notes/addnote`, {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json",
+     " auth-token": authToken
+   },
+   body: JSON.stringify({ title, description, tag }),
+ });
+ const json =await response.json();
+ console.log(json)
+ const addNote = async (title, description, tag) => {
+  // TODO: API Call
+  // API Call 
+  const response = await fetch(`${host}/api/notes/addnote`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      "auth-token": authToken
+    },
+    body: JSON.stringify({title, description, tag})
+  });
+  const json =await response.json();
+  console.log(json)
+  
+  console.log("Adding a new note")
+  const note = {
+    "_id": "61322f119ff553781a8ca8d0e08",
+    "user": "6131dc5e3ef4037cd4734a0664",
+    "title": title,
+    "description": description,
+    "tag": tag,
+    "date": "2021-09-03T14:20:09.668Z",
+    "__v": 0
+  };
+  setNotes(notes.concat(note))
+}
+
+///////////////////
+import React from "react";
+import NoteContext from "./NoteContext";
+const NoteState = (props)=>{
+    const s1 = {
+        "name":"satyam",
+        "class":"5f"
+    }
+    return(
+        <NoteContext.Provider value={s1}>
+            {props.children}
+        </NoteContext.Provider>
+        )}
+export default NoteState;
+
+
+
+import React from 'react'
+import {BrowserRouter as Link} from "react-router-dom";
+
+const Navbar = () => {
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+  <div className="container-fluid">
+    <span className="navbar-brand" href="/">Navbar</span>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <Link className="nav-item">
+          <span className="nav-Linknk active mx-2" aria-current="page" href="/">Home</span>
+        </Link>
+        <Link className="nav-item">
+          <span className="nav-Linknk mx-2" href="/about">About</span>
+        </Link>
+      </ul>
+      <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outLinkne-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    </div>
+  )
+}
+
+export default Navbar
+
+
+
+<Router>
+      <Navbar/>
+      <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/about" element={<About />}></Route>
+      </Routes>
+     </Router>
