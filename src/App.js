@@ -1,5 +1,6 @@
 
 import './App.css';
+import { Analytics } from '@vercel/analytics/next';
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './components/Home';
@@ -37,6 +38,8 @@ function App() {
           </div>
         </Router>
       </NoteState>
+      <Analytics />
+
     </>
   )
 }
